@@ -478,7 +478,7 @@ class JudgementDetailsPrinter {
 				echo '<div class="text-right text-muted">', '小提示：点击横条可展开更详细的信息', '</div>';
 			}
 			elseif ($this->styler->ioi_contest_is_running) {
-				echo '<div class="text-right text-muted">', 'IOI赛制比赛中不支持显示详细信息', '</div>';
+				echo '<div class="text-right text-muted">', 'IOI 赛制比赛中不支持显示详细信息', '</div>';
 			}
 			$this->_print_c($node);
 			echo '</div>';
