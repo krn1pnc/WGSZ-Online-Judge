@@ -2,7 +2,7 @@
         requirePHPLib('form');
         
         if (!validateUInt($_GET['id']) || !($problem = queryProblemBrief($_GET['id']))) {
-                become404Page();
+                become403Page();
         }
 
         function echoBlogCell($blog, &$cnt) {

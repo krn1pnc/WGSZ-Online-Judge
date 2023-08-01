@@ -18,9 +18,9 @@
 		function($type, $username) {
 			global $problem;
 			if ($type == '+') {
-				DB::query("insert into problems_permissions (problem_id, username) values (${problem['id']}, '$username')");
+				DB::query("insert into problems_viewers (problem_id, username) values (${problem['id']}, '$username')");
 			} else if ($type == '-') {
-				DB::query("delete from problems_permissions where problem_id = ${problem['id']} and username = '$username'");
+				DB::query("delete from problems_viewers where problem_id = ${problem['id']} and username = '$username'");
 			}
 		}
 	);
@@ -31,8 +31,8 @@
 <h1 class="page-header" align="center">#<?=$problem['id']?> : <?=$problem['title']?> 管理</h1>
 <ul class="nav nav-tabs" role="tablist">
 	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/statement" role="tab">题面</a></li>
-	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/viewers" role="tab">可视权限</a></li>
-	<li class="nav-item"><a class="nav-link active" href="/problem/<?= $problem['id'] ?>/manage/managers" role="tab">管理权限</a></li>
+	<li class="nav-item"><a class="nav-link active" href="/problem/<?= $problem['id'] ?>/manage/viewers" role="tab">可视权限</a></li>
+	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/managers" role="tab">管理权限</a></li>
 	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/data" role="tab">数据</a></li>
 	<li class="nav-item"><a class="nav-link" href="/problem/<?=$problem['id']?>" role="tab">返回</a></li>
 </ul>
@@ -47,7 +47,7 @@
 	<tbody>
 <?php
 	$row_id = 0;
-	$result = DB::query("select username from problems_permissions where problem_id = ${problem['id']}");
+	$result = DB::query("select username from problems_viewers where problem_id = ${problem['id']}");
 	while ($row = DB::fetch($result, MYSQLI_ASSOC)) {
 		$row_id++;
 		echo '<tr>', '<td>', $row_id, '</td>', '<td>', getUserLink($row['username']), '</td>', '</tr>';

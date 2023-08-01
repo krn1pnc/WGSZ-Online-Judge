@@ -402,7 +402,13 @@ function echoSubmissionsList($cond, $tail, $config, $user) {
 	
 	if (!isSuperUser($user)) {
 		if ($user != null) {
-			$permission_cond = "submissions.is_hidden = false or (submissions.is_hidden = true and submissions.problem_id in (select problem_id from problems_permissions where username = '{$user['username']}'))";
+			$permission_cond = "submissions.is_hidden = false or ("
+									."submissions.is_hidden = true and ("
+										."(submissions.problem_id in (select problem_id from problems_permissions where username = '{$user['username']}')) "
+										."or "
+										."(submissions.problem_id in (select problem_id from problems_viewers where username = '{$user['username']}'))"
+									.")"
+								.")";
 		} else {
 			$permission_cond = "submissions.is_hidden = false";
 		}
@@ -920,7 +926,13 @@ function echoHacksList($cond, $tail, $config, $user) {
 
 	if (!isSuperUser($user)) {
 		if ($user != null) {
-			$permission_cond = "is_hidden = false or (is_hidden = true and problem_id in (select problem_id from problems_permissions where username = '{$user['username']}'))";
+			$permission_cond = "is_hidden = false or ("
+									."is_hidden = true and ("
+										."(problem_id in (select problem_id from problems_permissions where username = '{$user['username']}')) "
+										."or "
+										."(problem_id in (select problem_id from problems_viewers where username = '{$user['username']}'))"
+									.")"
+								.")";
 		} else {
 			$permission_cond = "is_hidden = false";
 		}

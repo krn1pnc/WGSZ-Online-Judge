@@ -9,6 +9,17 @@ function hasProblemPermission($user, $problem) {
 	}
 	return DB::selectFirst("select * from problems_permissions where username = '{$user['username']}' and problem_id = {$problem['id']}") != null;
 }
+
+function hasProblemViewPermission($user, $problem) {
+	if ($user == null) {
+		return false;
+	}
+	if (isSuperUser($user)) {
+		return true;
+	}
+	return DB::selectFirst("select * from problems_viewers where username = '{$user['username']}' and problem_id = {$problem['id']}") != null;
+}
+
 function hasViewPermission($str,$user,$problem,$submission) {
 	if($str=='ALL')
 		return true;
@@ -104,7 +115,7 @@ function queryBlogComment($id) {
 }
 
 function isProblemVisibleToUser($problem, $user) {
-	return !$problem['is_hidden'] || hasProblemPermission($user, $problem);
+	return !$problem['is_hidden'] || hasProblemViewPermission($user, $problem) || hasProblemPermission($user, $problem);
 }
 function isContestProblemVisibleToUser($problem, $contest, $user) {
 	if (isProblemVisibleToUser($problem, $user)) {
@@ -125,7 +136,7 @@ function isSubmissionVisibleToUser($submission, $problem, $user) {
 	} else if (!$submission['is_hidden']) {
 		return true;
 	} else {
-		return hasProblemPermission($user, $problem);
+		return hasProblemViewPermission($user, $problem) || hasProblemPermission($user, $problem);
 	}
 }
 function isHackVisibleToUser($hack, $problem, $user) {
@@ -134,7 +145,7 @@ function isHackVisibleToUser($hack, $problem, $user) {
 	} elseif (!$hack['is_hidden']) {
 		return true;
 	} else {
-		return hasProblemPermission($user, $problem);
+		return hasProblemViewPermission($user, $problem) || hasProblemPermission($user, $problem);
 	}
 }
 
@@ -148,7 +159,7 @@ function isSubmissionFullVisibleToUser($submission, $contest, $problem, $user) {
 	} elseif ($submission['submitter'] == $user['username']) {
 		return true;
 	} else {
-		return hasProblemPermission($user, $problem);
+		return hasProblemViewPermission($user, $problem) || hasProblemPermission($user, $problem);
 	}
 }
 function isHackFullVisibleToUser($hack, $contest, $problem, $user) {
@@ -161,7 +172,7 @@ function isHackFullVisibleToUser($hack, $contest, $problem, $user) {
 	} elseif ($hack['hacker'] == $user['username']) {
 		return true;
 	} else {
-		return hasProblemPermission($user, $problem);
+		return hasProblemViewPermission($user, $problem) || hasProblemPermission($user, $problem);
 	}
 }
 

@@ -119,6 +119,15 @@
 
 				global $contest;
 				$contest_data = queryContestData($contest);
+				
+				// add participants into problem viewers
+				$participants = DB::query("SELECT username, user_rating FROM contests_registrants WHERE contest_id = {$contest['id']}");
+				while ($row = DB::fetch($participants, MYSQLI_NUM)) {
+					foreach ($contest_data['problems'] as $problem) {
+						DB::query("INSERT INTO problems_viewers (problem_id, username) VALUES ($problem, '${row[0]}')");
+					}
+				}
+
 				calcStandings($contest, $contest_data, $score, $standings, true);
 				if (!isset($contest['extra_config']['unrated'])) {
 					$rating_k = isset($contest['extra_config']['rating_k']) ? $contest['extra_config']['rating_k'] : 400;

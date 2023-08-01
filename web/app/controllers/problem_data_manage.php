@@ -611,8 +611,9 @@ EOD
 <?php echoUOJPageHeader(HTML::stripTags($problem['title']) . ' - 数据 - 题目管理') ?>
 <h1 class="page-header" align="center">#<?=$problem['id']?> : <?=$problem['title']?> 管理</h1>
 <ul class="nav nav-tabs" role="tablist">
-	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/statement" role="tab">编辑</a></li>
-	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/managers" role="tab">管理者</a></li>
+	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/statement" role="tab">题面</a></li>
+	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/viewers" role="tab">可视权限</a></li>
+	<li class="nav-item"><a class="nav-link" href="/problem/<?= $problem['id'] ?>/manage/managers" role="tab">管理权限</a></li>
 	<li class="nav-item"><a class="nav-link active" href="/problem/<?= $problem['id'] ?>/manage/data" role="tab">数据</a></li>
 	<li class="nav-item"><a class="nav-link" href="/problem/<?=$problem['id']?>" role="tab">返回</a></li>
 </ul>

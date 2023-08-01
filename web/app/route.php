@@ -16,6 +16,7 @@ Route::group([
 		Route::any('/problem/{id}', '/problem.php');
 		Route::any('/problem/{id}/statistics', '/problem_statistics.php');
 		Route::any('/problem/{id}/manage/statement', '/problem_statement_manage.php');
+		Route::any('/problem/{id}/manage/viewers', '/problem_viewers_manage.php');
 		Route::any('/problem/{id}/manage/managers', '/problem_managers_manage.php');
 		Route::any('/problem/{id}/manage/data', '/problem_data_manage.php');
 		
