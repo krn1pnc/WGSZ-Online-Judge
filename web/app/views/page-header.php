@@ -110,6 +110,9 @@
 		<?= HTML::js_src('/js/codemirror/mode/clike/clike.js') ?>
 		<?= HTML::js_src('/js/codemirror/mode/pascal/pascal.js') ?>
 		<?php endif ?>
+
+		<?= HTML::js_src('/js/highlight.min.js') ?>
+		<?= HTML::css_link('/css/tomorrow.min.css') ?>
 		
 		<?php if (isset($REQUIRE_LIB['slide-editor'])): ?>
 		<!-- UOJ slide editor -->

@@ -46,11 +46,7 @@ a sub {
 	text-indent: 2em;
 }
 
-article p {
-	text-indent: 2em;
-}
 .markdown-editor-out p {
-	text-indent: 2em;
 	word-break: break-all;
 }
 
@@ -59,9 +55,9 @@ article img {
 }
 
 pre {
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
 	padding: 9.5px;
 	margin: 0 0 10px;
 	background-color: #f5f5f5;
@@ -237,8 +233,10 @@ pre {
 	color: red;
 }
 
+/*
 .comt {
 }
+*/
 
 .comtposterbox {
 	text-align:center;
@@ -247,7 +245,6 @@ pre {
 	width: 100%;
 }
 .comtbox1 {
-	white-space: pre-wrap;
 	word-break: break-all;
 	min-height: 80px;
 	margin-top: 10px;
@@ -282,7 +279,6 @@ pre {
 	margin-top: 10px;
 }
 .comtbox6 {
-	white-space: pre-wrap;
 	word-break: break-all;
 }
 .comtbox7 {
@@ -392,4 +388,27 @@ pre {
 	width:50%;
 	padding-left:10px;
 	text-align:left;
+}
+
+.copy_code:hover {
+	cursor: pointer;
+}
+
+.copy_code {
+	position: absolute;
+	right: 0;
+}
+
+.copy_code_wrapper {
+		position: relative;
+	}
+
+blockquote {
+	padding-left: 2em;
+	color: #666;
+	border-left: 4px solid #ddd;
+}
+
+th[align=center] {
+	text-align: center;
 }
