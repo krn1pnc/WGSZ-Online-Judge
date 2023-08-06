@@ -624,12 +624,12 @@ EOD;
 						continue;
 					}
 					if ($line[0] != '+' && $line[0] != '-') {
-						return '第' . ($line_id + 1) . '行：格式错误';
+						return '第 ' . ($line_id + 1) . ' 行：格式错误';
 					}
 					$obj = trim(substr($line, 1));
 					
 					if ($err = $validate($obj)) {
-						return '第' . ($line_id + 1) . '行：' . $err;
+						return '第 ' . ($line_id + 1) . ' 行：' . $err;
 					}
 					$cmds[] = array('type' => $line[0], 'obj' => $obj);
 				}

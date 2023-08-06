@@ -11,7 +11,7 @@
 	$managers_form = newAddDelCmdForm('managers',
 		function($username) {
 			if (!validateUsername($username) || !queryUser($username)) {
-				return "不存在名为{$username}的用户";
+				return "不存在名为 {$username} 的用户";
 			}
 			return '';
 		},
