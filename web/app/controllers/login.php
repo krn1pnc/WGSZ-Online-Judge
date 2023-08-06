@@ -95,7 +95,7 @@ function submitLoginPost() {
 			window.location.href = prevUrl;
 		} else if (msg == 'banned') {
 			$('#div-username').addClass('has-error');
-			$('#help-username').html('该用户已被封停，请联系管理员。');
+			$('#help-username').html('若您刚刚注册 OJ，请联系管理员通过审核；否则，您的账号已被管理员封停，请联系管理员了解详情。');
 		} else if (msg == 'expired') {
 			$('#div-username').addClass('has-error');
 			$('#help-username').html('页面会话已过期。');
