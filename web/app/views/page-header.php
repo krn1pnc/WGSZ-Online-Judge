@@ -117,9 +117,9 @@
 		<?= HTML::js_src('/js/marked.js') ?>
 		<?php endif ?>
 
-		<?= HTML::js_src('/js/highlight.min.js') ?>
+		<?= HTML::js_src('/js/highlight/highlight.min.js') ?>
 		<?= HTML::js_src('/js/mark-comments.js') ?>
-		<?= HTML::css_link('/css/tomorrow.min.css') ?>
+		<?= HTML::css_link('/css/highlight-theme.css') ?>
 		
 		<?php if (isset($REQUIRE_LIB['slide-editor'])): ?>
 		<!-- UOJ slide editor -->
@@ -206,13 +206,6 @@
 		<?php if (isset($REQUIRE_LIB['raphael'])): ?>
 		<!-- raphael -->
 		<?= HTML::js_src('/js/raphael.min.js') ?>
-		<?php endif ?>
-		
-		<?php if (isset($REQUIRE_LIB['shjs'])): ?>
-		<!-- shjs -->
-		<?= HTML::css_link('/css/sh_typical.min.css') ?>
-		<?= HTML::js_src('/js/sh_main.min.js') ?>
-		<script type="text/javascript">$(document).ready(function(){sh_highlightDocument()})</script>
 		<?php endif ?>
 		
 		<?php if (isset($REQUIRE_LIB['ckeditor'])): ?>
