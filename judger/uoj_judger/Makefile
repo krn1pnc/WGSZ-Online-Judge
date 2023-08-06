@@ -2,25 +2,25 @@ INCLUDE_PATH = include
 CXXFLAGS = -I./include -O2
 
 EXE_CHECKER = \
-	builtin/checker/bcmp \
-	builtin/checker/acmp \
-	builtin/checker/caseicmp \
-	builtin/checker/casencmp \
-	builtin/checker/casewcmp \
-	builtin/checker/dcmp \
-	builtin/checker/fcmp \
-	builtin/checker/hcmp \
-	builtin/checker/icmp \
 	builtin/checker/lcmp \
-	builtin/checker/ncmp \
-	builtin/checker/rcmp \
-	builtin/checker/rcmp4 \
+	builtin/checker/casencmp \
 	builtin/checker/rcmp6 \
-	builtin/checker/rcmp9 \
+	builtin/checker/dcmp \
+	builtin/checker/rcmp4 \
+	builtin/checker/casewcmp \
+	builtin/checker/acmp \
+	builtin/checker/fcmp \
 	builtin/checker/rncmp \
+	builtin/checker/icmp \
+	builtin/checker/rcmp9 \
 	builtin/checker/uncmp \
+	builtin/checker/rcmp \
+	builtin/checker/hcmp \
+	builtin/checker/yesno \
+	builtin/checker/caseicmp \
 	builtin/checker/wcmp \
-	builtin/checker/yesno
+	builtin/checker/ncmp \
+	builtin/checker/nyesno
 
 EXE = main_judger \
 	run/formatter \
