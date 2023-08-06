@@ -1247,3 +1247,15 @@ function fixTableStyle() {
 $(function() {
 	fixTableStyle();
 });
+
+$(document).on('click', '.delete-uploaded-file-btn', function() {
+	if (confirm(`你真的要删除 ${$(this).data('name')} 吗？`)) {
+		$.post('/upload-delete', {
+			type: $(this).data('type'),
+			domain: $(this).data('domain'),
+			name: $(this).data('name'),
+		}, (ret) => {
+			$(this).replaceWith(`${ret}`);
+		});
+	}
+})

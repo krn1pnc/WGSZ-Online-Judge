@@ -246,6 +246,7 @@
 							<li role="presentation"><a class="dropdown-item" href="<?= HTML::url('/user/profile/' . Auth::id()) ?>"><?= UOJLocale::get('my profile') ?></a></li>
 							<li role="presentation"><a class="dropdown-item" href="<?= HTML::url('/user/msg') ?>"><?= UOJLocale::get('private message') ?>&nbsp;&nbsp;<?= $new_user_msg_num_html ?></a></li>
 							<li role="presentation"><a class="dropdown-item" href="<?= HTML::url('/user/system-msg') ?>"><?= UOJLocale::get('system message') ?>&nbsp;&nbsp;<?= $new_system_msg_num_html ?></a></li>
+							<li role="presentation"><a class="dropdown-item" href="<?= HTML::url('/upload-list/' . Auth::id()) ?>">文件上传</a></li>
 							<?php if (isSuperUser(Auth::user())): ?>
 								<li role="presentation"><a class="dropdown-item" href="<?= HTML::url('/super-manage') ?>"><?= UOJLocale::get('system manage') ?></a></li>
 							<?php endif ?>

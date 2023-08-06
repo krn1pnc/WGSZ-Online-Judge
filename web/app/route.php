@@ -6,6 +6,7 @@ Route::pattern('contest_id', '[1-9][0-9]{0,9}');
 Route::pattern('tab', '\S{1,20}');
 Route::pattern('rand_str_id', '[0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]{20}');
 Route::pattern('upgrade_name', '[a-zA-Z0-9_]{1,50}');
+Route::pattern('uploaded_file_path', '.*');
 
 Route::group([
 		'domain' => '('.UOJConfig::$data['web']['main']['host'].'|127.0.0.1'.')'
@@ -62,6 +63,10 @@ Route::group([
 		Route::any('/user/system-msg', '/user_system_msg.php');
 		Route::any('/super-manage(?:/{tab})?', '/super_manage.php');
 		
+		Route::any('/upload-file', '/upload_file.php');
+		Route::any('/upload/{uploaded_file_path}', '/upload.php');
+		Route::any('/upload-list/{username}', '/upload_list.php');
+		Route::any('/upload-delete', '/upload_delete.php');
 		Route::any('/download.php', '/download.php');
 		
 		Route::any('/click-zan', '/click_zan.php');
