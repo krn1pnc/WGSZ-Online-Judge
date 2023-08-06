@@ -412,3 +412,10 @@ blockquote {
 th[align=center] {
 	text-align: center;
 }
+
+code {
+	border: 1px solid #e8e8e8;
+	border-radius: 2px;
+	padding: .1em .2em;
+	background: #fafafa;
+}
