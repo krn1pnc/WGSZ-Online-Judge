@@ -1249,7 +1249,7 @@ function copyTextToClipboard(text) {
 }
 
 function fixTableStyle() {
-	$('table').not('[class]').each(function () {
+	$('table').not('[class]').not('[style]').each(function () {
 		$(this).addClass('table table-bordered table-text-center table-vertical-middle')
 	});
 }
