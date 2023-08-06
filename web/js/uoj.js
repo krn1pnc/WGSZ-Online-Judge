@@ -599,20 +599,10 @@ function require_codemirror(config, callback) {
 function get_codemirror_mode(lang) {
 	switch (lang) {
 		case 'C++':
-		case 'C++11':
+		case 'C++98':
+		case 'C++14':
+		case 'C++20':
 			return 'text/x-c++src';
-		case 'C':
-			return 'text/x-csrc';
-		case 'Python2':
-		case 'Python3':
-			return 'text/x-python';
-		case 'Java8':
-		case 'Java11':
-			return 'text/x-java';
-		case 'Pascal':
-			return 'text/x-pascal';
-		case 'text':
-			return 'text/plain';
 		default:
 			return 'text/plain';
 	}

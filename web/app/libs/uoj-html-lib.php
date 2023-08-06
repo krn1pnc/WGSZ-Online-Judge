@@ -446,25 +446,10 @@ function echoSubmissionContent($submission, $requirement) {
 			$footer_text = UOJLocale::get('problems::source code').', '.UOJLocale::get('problems::language').': '.$file_language;
 			switch ($file_language) {
 				case 'C++':
-				case 'C++11':
+				case 'C++98':
+				case 'C++14':
+				case 'C++20':
 					$sh_class = 'sh_cpp';
-					break;
-				case 'Python2':
-				case 'Python3':
-					$sh_class = 'sh_python';
-					break;
-				case 'Java8':
-				case 'Java11':
-					$sh_class = 'sh_java';
-					break;
-				case 'C':
-					$sh_class = 'sh_c';
-					break;
-				case 'Pascal':
-					$sh_class = 'sh_pascal';
-					break;
-				default:
-					$sh_class = '';
 					break;
 			}
 			echo '<div class="card border-info mb-3">';
