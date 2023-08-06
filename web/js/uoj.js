@@ -1247,3 +1247,13 @@ function copyTextToClipboard(text) {
 
 	document.body.removeChild(textArea);
 }
+
+function fixTableStyle() {
+	$('table').not('[class]').each(function () {
+		$(this).addClass('table table-bordered table-text-center table-vertical-middle')
+	});
+}
+
+$(function() {
+	fixTableStyle();
+});
