@@ -12,7 +12,7 @@
 		private $data = array();
 		private $vdata = array();
 		private $main_html = '';
-		public $max_post_size = 15728640; // 15M
+		public $max_post_size = 100 * 1024 * 1024;
 		
 		public $handle;
 		
@@ -32,7 +32,7 @@
 				}
 				foreach ($this->data as $field) {
 					if (!isset($field['no_val']) && !isset($_POST[$field['name']])) {
-						becomeMsgPage('The form is incomplete.');
+						becomeMsgPage('The field "' . $field['name'] . '" is not set.');
 					}
 				}
 				
@@ -97,17 +97,20 @@ EOD;
 			$this->add($name, $html, $validator_php, $validator_js);
 		}
 		
-		public function addInput($name, $type, $label_text, $default_value, $validator_php, $validator_js) {
+		public function addInput($name, $type, $label_text, $default_value, $validator_php, $validator_js, $no_val = false) {
 			$default_value = htmlspecialchars($default_value);
 			$html = <<<EOD
 <div id="div-$name" class="form-group">
 	<label for="input-$name" class="col-sm-2 control-label">$label_text</label>
 	<div class="col-sm-3">
 		<input type="$type" class="form-control" name="$name" id="input-$name" value="$default_value" />
-		<span class="help-block" id="help-$name"></span>
+		<span class="invalid-feedback" id="help-$name"></span>
 	</div>
 </div>
 EOD;
+			if ($no_val)
+			$this->addNoval($name, $html);
+			else
 			$this->add($name, $html, $validator_php, $validator_js);
 		}
 		public function addSelect($name, $options, $label_text, $default_value) {
@@ -116,7 +119,7 @@ EOD;
 <div id="div-$name" class="form-group">
 	<label for="input-$name" class="col-sm-2 control-label">$label_text</label>
 	<div class="col-sm-3">
-		<select class="form-control" id="input-content" name="$name">
+		<select class="form-control" id="input-$name" name="$name">
 
 EOD;
 			foreach ($options as $opt_name => $opt_label) {
@@ -190,7 +193,7 @@ EOD;
 	<label for="input-$name" class="col-sm-2 control-label">$label_text</label>
 	<div class="col-sm-10">
 		<textarea class="form-control" name="$name" id="input-$name">$default_value</textarea>
-		<span class="help-block" id="help-$name"></span>
+		<span class="invalid-feedback" id="help-$name"></span>
 	</div>
 </div>
 EOD;
@@ -203,7 +206,7 @@ EOD;
 <div id="div-$name" class="form-group">
 	<label for="input-$name" class="control-label">$label_text</label>
 	<textarea class="form-control" name="$name" id="input-$name">$default_value</textarea>
-	<span class="help-block" id="help-$name"></span>
+	<span class="invalid-feedback" id="help-$name"></span>
 </div>
 EOD;
 			$this->add($name, $html, $validator_php, $validator_js);
@@ -229,7 +232,7 @@ EOD;
 <div id="div-$name">
 	<label for="input-$name" class="control-label">$label_text</label>
 	<textarea class="ckeditor" name="$name" id="input-$name">$default_value</textarea>
-	<span class="help-block" id="help-$name"></span>
+	<span class="invalid-feedback" id="help-$name"></span>
 </div>
 EOD;
 			$this->add($name, $html, $validator_php, $validator_js);
@@ -292,7 +295,7 @@ EOD
 <div id="div-$name">
 	<label for="input-$name" class="control-label">$label_text</label>
 	<textarea name="$name" id="input-$name">$default_value</textarea>
-	<span class="help-block" id="help-$name"></span>
+	<span class="invalid-feedback" id="help-$name"></span>
 </div>
 <script type="text/javascript">
 $('#input-$name').slide_editor();
@@ -433,6 +436,7 @@ EOD;
 				echo <<<EOD
 	$('#form-{$this->form_name}').keydown(function(e) {
 		if (e.keyCode == 13 && e.ctrlKey) {
+			$('#button-submit-{$this->form_name}').focus();
 			$('#button-submit-{$this->form_name}').click();
 		}
 	});
@@ -515,11 +519,11 @@ EOD;
 				if ($field['validator_js'] != 'always_ok') {
 					echo <<<EOD
 		if (${field['name']}_err) {
-			$('#div-${field['name']}').addClass('has-error');
+			$('#input-${field['name']}').addClass('is-invalid');
 			$('#help-${field['name']}').text(${field['name']}_err);
 			ok = false;
 		} else {
-			$('#div-${field['name']}').removeClass('has-error');
+			$('#input-${field['name']}').removeClass('is-invalid');
 			$('#help-${field['name']}').text('');
 		}
 
@@ -532,7 +536,7 @@ EOD;
 			}
 			if (isset($this->submit_button_config['confirm_text'])) {
 				echo <<<EOD
-		if (!confirm('{$this->submit_button_config['confirm_text']}')) {
+		if (ok && !confirm('{$this->submit_button_config['confirm_text']}')) {
 			ok = false;
 		}
 
@@ -543,11 +547,11 @@ EOD;
 		$(this).find("input[type='file']").each(function() {
 			for (var i = 0; i < this.files.length; i++) {
 				if (this.files[i].size > 100 * 1024 * 1024) {
-					$('#div-' + $(this).attr('name')).addClass('has-error');
+					$('#input-' + $(this).attr('name')).addClass('is-invalid');
 					$('#help-' + $(this).attr('name')).text('文件大小不能超过 100M');
 					ok = false;
 				} else {
-					$('#div-' + $(this).attr('name')).removeClass('has-error');
+					$('#input-' + $(this).attr('name')).removeClass('is-invalid');
 					$('#help-' + $(this).attr('name')).text('');
 				}
 			}
@@ -736,7 +740,7 @@ EOD;
 			<button type="button" class="btn btn-primary" style="width:100px; !important" onclick="$('#input-{$name}').click();"><span class="glyphicon glyphicon-folder-open"></span> $browse_text</button>
 		</span>
 	</div>
-	<span class="help-block" id="help-{$name}"></span>
+	<span class="invalid-feedback" id="help-{$name}"></span>
 </div>
 EOD;
 		
