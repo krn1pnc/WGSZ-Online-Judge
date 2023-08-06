@@ -114,7 +114,7 @@
 		<?php endif ?>
 
 		<?php if (isset($REQUIRE_LIB['blog-editor']) || isset($REQUIRE_LIB['comments'])): ?>
-		<?= HTML::js_src('/js/marked.js') ?>
+		<?= HTML::js_src('/js/marked.min.js') ?>
 		<?php endif ?>
 
 		<?= HTML::js_src('/js/highlight/highlight.min.js') ?>
