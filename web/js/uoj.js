@@ -558,6 +558,8 @@ $.fn.long_table = function(data, cur_page, header_row, get_row_str, config) {
 						e.preventDefault();
 					}
 					$(table_div).long_table(data, p, header_row, get_row_str, config);
+					markComments();
+					MathJax.typeset();
 				})
 			);
 			return li;
