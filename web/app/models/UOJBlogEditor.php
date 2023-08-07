@@ -1,6 +1,6 @@
 <?php
 
-require $_SERVER['DOCUMENT_ROOT'].'/app/vendor/parsedown/Parsedown.php';
+require $_SERVER['DOCUMENT_ROOT'].'/app/vendor/parsedown/ParsedownMath.php';
 
 class UOJBlogEditor {
 	public $type = 'blog';
@@ -98,8 +98,12 @@ class UOJBlogEditor {
 		$this->post_data['title'] = HTML::escape($this->post_data['title']);
 		
 		if ($this->type == 'blog') {
-			$content_md = $_POST[$this->name . '_content_md'];
-			$Parsedown = new Parsedown();
+			$Parsedown = new ParsedownMath([
+				'math' => [
+					'enabled' => true,
+					'matchSingleDollar' => true
+				]
+			]);
 			$this->post_data['content'] = $Parsedown->text($this->post_data['content_md']);
 
 			if (preg_match('/^.*<!--.*readmore.*-->.*$/m', $this->post_data['content'], $matches, PREG_OFFSET_CAPTURE)) {
@@ -115,7 +119,12 @@ class UOJBlogEditor {
 				die(json_encode(array('content_md' => '不合法的 YAML 格式')));
 			}
 			
-			$Parsedown = new Parsedown();
+			$Parsedown = new ParsedownMath([
+				'math' => [
+					'enabled' => true,
+					'matchSingleDollar' => true
+				]
+			]);
 
 			$marked = function($md) use($Parsedown, $purifier) {
 				return $purifier->purify($Parsedown->text($md));
