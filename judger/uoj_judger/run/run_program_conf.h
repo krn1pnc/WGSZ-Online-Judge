@@ -211,6 +211,8 @@ int syscall_max_cnt_list_default[][2] = {
 	{__NR_ioctl         , -1},
 	{__NR_fcntl         , -1},
 
+	{__NR_pread64       , -1},
+
 	{__NR_mmap          , -1},
 	{__NR_mprotect      , -1},
 	{__NR_munmap        , -1},

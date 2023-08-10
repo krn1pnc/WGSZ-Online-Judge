@@ -778,6 +778,7 @@ RunCompilerResult run_compiler(const char *path, ...) {
 	vector<string> argv;
 	argv.push_back("--type=compiler");
 	argv.push_back(string("--work-path=") + path);
+	argv.push_back("--unsafe");
 	va_list vl;
 	va_start(vl, path);
 	for (const char *arg = va_arg(vl, const char *); arg; arg = va_arg(vl, const char *)) {
