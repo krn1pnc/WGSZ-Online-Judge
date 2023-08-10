@@ -1,10 +1,7 @@
 .config.php
-judger/log
 judger/.conf.json
 judger/uoj_judger/include/uoj_work_path.h
 judger/uoj_judger/main_judger
 judger/uoj_judger/data
-judger/uoj_judger/result
-judger/uoj_judger/work
 
 .vscode/
