@@ -164,7 +164,7 @@
 		<div class="media">
 			<div class="media-left comtposterbox mr-3">
 				<a href="<?= HTML::url('/user/profile/'.$poster['username']) ?>" class="d-none d-sm-block">
-					<img class="media-object img-rounded" src="<?= $asrc ?>" alt="avatar" />
+					<img class="media-object img-rounded" src="<?= $asrc ?>" alt="avatar" style="width: 80px;"/>
 				</a>
 			</div>
 			<div id="comment-body-<?= $comment['id'] ?>" class="media-body comtbox">

@@ -24,7 +24,7 @@
 		<?php endif ?>
 	</div>
 	<div class="col-md-3">
-		<img class="media-object img-thumbnail center-block" alt="<?= UOJContext::user()['username'] ?> Avatar" src="<?= HTML::avatar_addr(UOJContext::user(), 256) ?>" />
+		<img class="media-object img-thumbnail center-block" alt="<?= UOJContext::user()['username'] ?> Avatar" src="<?= HTML::avatar_addr(UOJContext::user(), 256) ?>" style="width: 256px;"/>
 	</div>
 </div>
 <?php echoUOJPageFooter() ?>

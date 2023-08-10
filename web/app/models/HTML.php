@@ -7,8 +7,8 @@ class HTML {
 	public static function stripTags($str) {
 		return strip_tags($str);
 	}
-	public static function avatar_addr($user, $size) {
-		return '//cn.gravatar.com/avatar/' . md5(strtolower(trim($user['email']))) . "?d=mm&amp;s=$size";
+	public static function avatar_addr($user) {
+		return "/upload/" . $user['username'] . "/avatar.png";
 	}
 		
 	public static function tablist($tabs_info, $cur, $type = 'nav-tabs') {

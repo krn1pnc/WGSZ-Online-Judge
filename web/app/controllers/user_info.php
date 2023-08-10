@@ -28,7 +28,7 @@
 		<div class="card-body">
 			<div class="row mb-4">
 				<div class="col-md-4 order-md-9">
-					<img class="media-object img-thumbnail d-block mx-auto" alt="<?= $user['username'] ?> Avatar" src="<?= HTML::avatar_addr($user, 256) ?>" />
+					<img class="media-object img-thumbnail d-block mx-auto" alt="<?= $user['username'] ?> Avatar" src="<?= HTML::avatar_addr($user) ?>" style="width: 256px;"/>
 				</div>
 				<div class="col-md-8 order-md-1">
 					<h2><span class="uoj-honor" data-rating="<?= $user['rating'] ?>"><?= $user['username'] ?></span> <span><strong style="<?= $col_sex ?>"><?= $esc_sex ?></strong></span></h2>
