@@ -3,6 +3,8 @@ return [
 	'profile' => [
 		'oj-name' => 'Universal Online Judge',
 		'oj-name-short' => 'UOJ',
+		'oj-logo-name' => 'logo',
+		'oj-favicon-name' => 'favicon',
 		'administrator' => 'root',
 		'admin-email' => 'admin@local_uoj.ac',
 		'QQ-group' => '',
