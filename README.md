@@ -21,7 +21,8 @@
 
 ## 感谢
 
-- [vfleaking](https://github.com/vfleaking) 将 UOJ 代码[开源](https://github.com/vfleaking/uoj)
+- [vfleaking](https://github.com/vfleaking) 将 UOJ 代码 [开源](https://github.com/vfleaking/uoj)
 - 向原项目或本项目贡献代码的人
 - 给我们启发与灵感以及提供意见和建议的人
+- [ouuan](https://github.com/ouuan) 的 [魔改 UOJ](https://github.com/ouuan/Hinata-Online-Judge)
 
