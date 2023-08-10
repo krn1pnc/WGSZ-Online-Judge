@@ -1,13 +1,10 @@
-FROM ubuntu:18.04
-MAINTAINER MascoSkray <MascoSkray@gmail.com>
+FROM ubuntu:20.04
 ARG CLONE_ADDFLAG
 
 WORKDIR /opt
-#Update apt and install git
-RUN apt-get update && apt-get install -y git
-#Clone the latest UOJ Community verison to local
-RUN git clone https://github.com/UniversalOJ/UOJ-System.git --depth 1 --single-branch ${CLONE_ADDFLAG} uoj
-#Install environment and set startup script
+COPY . /opt/uoj
+
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list && apt-get clean && apt-get update
 RUN cd uoj/install/judger && sh install.sh -p && echo "\
 #!/bin/sh\n\
 if [ ! -f \"/opt/uoj/judger/.conf.json\" ]; then\n\
