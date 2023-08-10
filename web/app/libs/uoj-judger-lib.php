@@ -1,6 +1,6 @@
 <?php
 	global $uojSupportedLanguages, $uojMainJudgerWorkPath;
-	$uojSupportedLanguages = array('C++', 'C++98', 'C++14', 'C++20');
+	$uojSupportedLanguages = array('C++', 'C++98', 'C++14', 'C++17');
 	$uojMainJudgerWorkPath = "/opt/uoj/judger/uoj_judger";
 	
 	function authenticateJudger() {
@@ -183,4 +183,3 @@
 		
 		DB::update("update problems set ac_num = (select count(*) from submissions where problem_id = problems.id and score = 100), submit_num = (select count(*) from submissions where problem_id = problems.id) where id = $problem_id");
 	}
-?>

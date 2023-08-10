@@ -602,7 +602,7 @@ function get_codemirror_mode(lang) {
 		case 'C++':
 		case 'C++98':
 		case 'C++14':
-		case 'C++20':
+		case 'C++17':
 			return 'text/x-c++src';
 		default:
 			return 'text/plain';
