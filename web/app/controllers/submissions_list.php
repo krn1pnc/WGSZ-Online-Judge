@@ -39,22 +39,22 @@
 	<?php endif ?>
 	<form id="form-search" class="form-inline" method="get">
 		<div id="form-group-problem_id" class="form-group">
-			<label for="input-problem_id" class="control-label"><?= UOJLocale::get('problems::problem id')?>:</label>
-			<input type="text" class="form-control input-sm" name="problem_id" id="input-problem_id" value="<?= $q_problem_id ?>" maxlength="4" style="width:4em" />
+			<label for="input-problem_id" class="control-label" style="margin-right: 0.5em;"><?= UOJLocale::get('problems::problem id')?>:</label>
+			<input type="text" class="form-control input-sm" name="problem_id" id="input-problem_id" value="<?= $q_problem_id ?>" maxlength="4" style="width: 4em; margin-right: 0.5em;" />
 		</div>
 		<div id="form-group-submitter" class="form-group">
-			<label for="input-submitter" class="control-label"><?= UOJLocale::get('username')?>:</label>
-			<input type="text" class="form-control input-sm" name="submitter" id="input-submitter" value="<?= $q_submitter ?>" maxlength="20" style="width:10em" />
+			<label for="input-submitter" class="control-label" style="margin-right: 0.5em;"><?= UOJLocale::get('username')?>:</label>
+			<input type="text" class="form-control input-sm" name="submitter" id="input-submitter" value="<?= $q_submitter ?>" maxlength="20" style="width: 10em; margin-right: 0.5em;" />
 		</div>
 		<div id="form-group-score" class="form-group">
-			<label for="input-min_score" class="control-label"><?= UOJLocale::get('score range')?>:</label>
-			<input type="text" class="form-control input-sm" name="min_score" id="input-min_score" value="<?= $q_min_score ?>" maxlength="3" style="width:4em; margin-right: 0.25em;" placeholder="0" />
+			<label for="input-min_score" class="control-label" style="margin-right: 0.5em;"><?= UOJLocale::get('score range')?>:</label>
+			<input type="text" class="form-control input-sm" name="min_score" id="input-min_score" value="<?= $q_min_score ?>" maxlength="3" style="width: 4em; margin-right: 0.25em;" placeholder="0" />
 			<label for="input-max_score" style="margin-right: 0.25em;" class="control-label">~</label>
-			<input type="text" class="form-control input-sm" name="max_score" id="input-max_score" value="<?= $q_max_score ?>" maxlength="3" style="width:4em" placeholder="100" />
+			<input type="text" class="form-control input-sm" name="max_score" id="input-max_score" value="<?= $q_max_score ?>" maxlength="3" style="width: 4em; margin-right: 0.5em;" placeholder="100" />
 		</div>
 		<div id="form-group-language" class="form-group">
-			<label for="input-language" class="control-label"><?= UOJLocale::get('problems::language')?>:</label>
-			<input type="text" class="form-control input-sm" name="language" id="input-language" value="<?= $html_esc_q_language ?>" maxlength="10" style="width:8em" />
+			<label for="input-language" class="control-label" style="margin-right: 0.5em;"><?= UOJLocale::get('problems::language')?>:</label>
+			<input type="text" class="form-control input-sm" name="language" id="input-language" value="<?= $html_esc_q_language ?>" maxlength="10" style="width: 8em; margin-right: 0.5em;" />
 		</div>
 		<button type="submit" id="submit-search" class="btn btn-secondary btn-sm ml-2"><?= UOJLocale::get('search')?></button>
 	</form>
