@@ -18,7 +18,6 @@ class UploadedFile
 
 	public function filePath()
 	{
-		error_log(UOJContext::storagePath() . $this->relPath());
 		return UOJContext::storagePath() . $this->relPath();
 	}
 
