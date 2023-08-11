@@ -7,15 +7,13 @@
 
         function echoBlogCell($blog, &$cnt) {
 		$hasTutorial = false;
-		$hasProblemID = false;
 		foreach (queryBlogTags($blog['id']) as $tag) {
-			if ($tag == 'tutorial'):
-				$hasTutorial = true;
-			elseif ($tag == $_GET['id']):
-				$hasProblemID = true;
-			endif;
+			if (preg_match('/tutorial\-[1-9][0-9]{0,9}/', $tag)) {
+				$ID = substr($tag, strpos($tag, '-') + 1);
+				if ($ID == $_GET['id']) $hasTutorial = true;
+			}
 		}
-		if ($hasTutorial && $hasProblemID):		
+		if ($hasTutorial):		
 			$cnt += 1;
 			echo '<tr>';
 			echo '<td>' . getBlogLink($blog['id']) . '</td>';
@@ -46,5 +44,5 @@ EOD;
 <h3><?= HTML::stripTags($problem['title']) . ' ' . UOJLocale::get('problems::tutorial') ?></h3>
 <?php $cnt = 0 ?>
 <?php echoLongTableCnt(array('id', 'poster', 'title', 'post_time', 'zan'), 'blogs', 'is_hidden = 0', 'order by post_time desc', $header, 'echoBlogCell', $config, $cnt); ?>
-<p>在博客中加上 <code>tutorial</code> 以及 <code>题号</code> 两个标签就可以发布题解啦！</p>
+<p>在博客中加上 <code>tutorial-题号</code> 这个标签就可以发布题解啦！</p>
 <?php echoUOJPageFooter() ?>
