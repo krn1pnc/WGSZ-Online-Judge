@@ -53,7 +53,7 @@
 		<?= HTML::css_link('/css/uoj-theme.css?v=2.3333') ?>
 		
 		<!-- jQuery (necessary for Bootstrap\'s JavaScript plugins) -->
-		<?= HTML::js_src('/js/jquery.min.js') ?>
+		<?= HTML::js_src('/js/jquery.min.js?v=2023.8.13') ?>
 		
 		<!-- jQuery autosize -->
 		<?= HTML::js_src('/js/jquery.autosize.min.js') ?>
@@ -82,7 +82,7 @@
 		<?= HTML::js_src('/js/color-converter.min.js') ?>
 		
 		<!-- uoj -->
-		<?= HTML::js_src('/js/uoj.js?v=2017.01.01') ?>
+		<?= HTML::js_src('/js/uoj.js?v=2023.8.13') ?>
 		
 		<!-- readmore -->
 		<?= HTML::js_src('/js/readmore/readmore.min.js') ?>
@@ -114,12 +114,12 @@
 		<?php endif ?>
 
 		<?php if (isset($REQUIRE_LIB['blog-editor']) || isset($REQUIRE_LIB['comments'])): ?>
-		<?= HTML::js_src('/js/marked.min.js') ?>
+		<?= HTML::js_src('/js/marked.min.js?v=2023.8.13') ?>
 		<?php endif ?>
 
-		<?= HTML::js_src('/js/highlight/highlight.min.js') ?>
-		<?= HTML::js_src('/js/mark-comments.js') ?>
-		<?= HTML::css_link('/css/highlight-theme.css') ?>
+		<?= HTML::js_src('/js/highlight/highlight.min.js?v=2023.8.13') ?>
+		<?= HTML::js_src('/js/mark-comments.js?v=2023.8.13') ?>
+		<?= HTML::css_link('/css/highlight-theme.css?v=2023.8.13') ?>
 		
 		<?php if (isset($REQUIRE_LIB['slide-editor'])): ?>
 		<!-- UOJ slide editor -->
