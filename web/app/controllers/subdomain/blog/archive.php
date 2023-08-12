@@ -57,7 +57,20 @@
 			<div class="text-muted">此人很懒，什么博客也没留下。</div>
 			<?php else: ?>
 			<?php foreach ($blogs_pag->get() as $blog): ?>
-				<?php echoBlog($blog, array('is_preview' => true)) ?>
+				<?php $canShow = true ?>
+				<?php foreach (queryBlogTags($blog['id']) as $tag):?>
+					<?php if (preg_match('/tutorial\-[1-9][0-9]{0,9}/', $tag)): ?>
+						<?php $ID = substr($tag, strpos($tag, '-') + 1) ?>
+						<?php error_log($ID) ?>
+						<?php if (!isProblemVisibleToUser(queryProblemBrief(intval($ID)), Auth::user())): ?>
+							<?php $canShow = false ?>
+						<?php endif ?>
+					<?php endif ?>
+				<?php endforeach ?>
+
+				<?php if ($canShow): ?>
+					<?php echoBlog($blog, array('is_preview' => true)) ?>
+				<?php endif ?>
 			<?php endforeach ?>
 			<div class="text-right text-muted">共 <?= $blogs_pag->n_rows ?> 篇博客</div>
 			<?php endif ?>
@@ -71,7 +84,20 @@
 				共找到 <?= $blogs_pag->n_rows ?> 篇包含 “<?= HTML::escape($blog_tag_required) ?>” 标签的博客：
 			</div>
 			<?php foreach ($blogs_pag->get() as $blog): ?>
-				<?php echoBlog($blog, array('is_preview' => true)) ?>
+				<?php $canShow = true ?>
+				<?php foreach (queryBlogTags($blog['id']) as $tag):?>
+					<?php if (preg_match('/tutorial\-[1-9][0-9]{0,9}/', $tag)): ?>
+						<?php $ID = substr($tag, strpos($tag, '-') + 1) ?>
+						<?php error_log($ID) ?>
+						<?php if (!isProblemVisibleToUser(queryProblemBrief(intval($ID)), Auth::user())): ?>
+							<?php $canShow = false ?>
+						<?php endif ?>
+					<?php endif ?>
+				<?php endforeach ?>
+
+				<?php if ($canShow): ?>
+					<?php echoBlog($blog, array('is_preview' => true)) ?>
+				<?php endif ?>
 			<?php endforeach ?>
 			<?php endif ?>
 		<?php endif ?>

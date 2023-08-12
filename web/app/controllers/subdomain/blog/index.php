@@ -19,7 +19,20 @@
 		<div class="text-muted">此人很懒，什么博客也没留下。</div>
 		<?php else: ?>
 		<?php foreach ($blogs_pag->get() as $blog): ?>
-			<?php echoBlog($blog, array('is_preview' => true)) ?>
+			<?php $canShow = true ?>
+			<?php foreach (queryBlogTags($blog['id']) as $tag):?>
+				<?php if (preg_match('/tutorial\-[1-9][0-9]{0,9}/', $tag)): ?>
+					<?php $ID = substr($tag, strpos($tag, '-') + 1) ?>
+					<?php error_log($ID) ?>
+					<?php if (!isProblemVisibleToUser(queryProblemBrief(intval($ID)), Auth::user())): ?>
+						<?php $canShow = false ?>
+					<?php endif ?>
+				<?php endif ?>
+			<?php endforeach ?>
+
+			<?php if ($canShow): ?>
+				<?php echoBlog($blog, array('is_preview' => true)) ?>
+			<?php endif ?>
 		<?php endforeach ?>
 		<?php endif ?>
 	</div>
