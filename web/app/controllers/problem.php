@@ -227,6 +227,7 @@ EOD
 	<div class="col-md-2 text-right" id="contest-countdown"></div>
 </div>
 <a role="button" class="btn btn-info float-right" href="/contest/<?= $contest['id'] ?>/problem/<?= $problem['id'] ?>/statistics"><span class="glyphicon glyphicon-stats"></span> <?= UOJLocale::get('problems::statistics') ?></a>
+<a role="button" class="btn btn-info float-right" href="/download.php?type=problem&id=<?= $problem['id'] ?>"><span class="glyphicon glyphicon-download"></span> 附件下载</a>
 <?php if ($contest['cur_progress'] <= CONTEST_IN_PROGRESS): ?>
 <script type="text/javascript">
 checkContestNotice(<?= $contest['id'] ?>, '<?= UOJTime::$time_now_str ?>');
@@ -236,6 +237,7 @@ $('#contest-countdown').countdown(<?= $contest['end_time']->getTimestamp() - UOJ
 <?php else: ?>
 <h1 class="page-header text-center">#<?= $problem['id']?>. <?= $problem['title'] ?></h1>
 <a role="button" class="btn btn-info float-right" href="/problem/<?= $problem['id'] ?>/statistics"><span class="glyphicon glyphicon-stats"></span> <?= UOJLocale::get('problems::statistics') ?></a>
+<a role="button" class="btn btn-info float-right" href="/download.php?type=problem&id=<?= $problem['id'] ?>"><span class="glyphicon glyphicon-download"></span> 附件下载</a>
 <?php endif ?>
 
 <ul class="nav nav-tabs" role="tablist">
