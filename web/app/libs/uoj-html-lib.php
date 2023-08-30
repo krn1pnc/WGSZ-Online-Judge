@@ -1011,10 +1011,10 @@ function echoRanklist($config = array()) {
 	$header_row .= '</tr>';
 	
 	$users = array();
-	$print_row = function($user, $now_cnt) use(&$users) {
+	$print_row = function($user, $now_cnt) use (&$users) {
 		if (!$users) {
 			$rank = DB::selectCount("select count(*) from user_info where rating > {$user['rating']}") + 1;
-		} else if ($user['rating'] == $users[count($users) - 1]['rating']) {
+		} elseif ($user['rating'] == $users[count($users) - 1]['rating']) {
 			$rank = $users[count($users) - 1]['rank'];
 		} else {
 			$rank = $now_cnt;
@@ -1031,7 +1031,7 @@ function echoRanklist($config = array()) {
 		
 		$users[] = $user;
 	};
-	$col_names = array('b.username', 'b.rating', 'b.motto');
+	$col_names = array('username', 'rating', 'motto');
 	$tail = 'order by rating desc, username asc';
 	
 	if (isset($config['top10'])) {
@@ -1039,5 +1039,5 @@ function echoRanklist($config = array()) {
 	}
 	
 	$config['get_row_index'] = '';
-	echoLongTable($col_names, 'contests_registrants a join user_info b on a.username = b.username and a.has_participated = 1 and b.usergroup != "B"', '1', $tail, $header_row, $print_row, $config);
+	echoLongTable($col_names, 'user_info', '1', $tail, $header_row, $print_row, $config);
 }
