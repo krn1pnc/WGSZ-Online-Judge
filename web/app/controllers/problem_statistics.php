@@ -17,7 +17,7 @@
 
 	function scoreDistributionData() {
 		$data = array();
-		$result = DB::select("select score, count(*) from submissions where problem_id = {$_GET['id']} and score is not null group by score");
+		$result = DB::select("SELECT score, count(*) FROM submissions WHERE problem_id = {$_GET['id']} AND score IS NOT NULL GROUP BY score ORDER BY score ASC");
 		$is_res_empty = true;
 		$has_score_0 = false;
 		$has_score_100 = false;
