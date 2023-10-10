@@ -487,7 +487,7 @@ function echoSubmissionContent($submission, $requirement) {
 				case 'C++98':
 				case 'C++14':
 				case 'C++17':
-					$sh_class = 'sh_cpp';
+					$sh_class = 'language-cpp';
 					break;
 			}
 			echo '<div class="card border-info mb-3">';
