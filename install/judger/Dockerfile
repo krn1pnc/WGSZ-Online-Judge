@@ -1,10 +1,10 @@
 FROM ubuntu:20.04
 ARG CLONE_ADDFLAG
 
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list && apt-get clean && apt-get update
+
 WORKDIR /opt
 COPY . /opt/uoj
-
-RUN sed -i s@/archive.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list && apt-get clean && apt-get update
 RUN cd uoj/install/judger && sh install.sh -p && echo "\
 #!/bin/sh\n\
 if [ ! -f \"/opt/uoj/judger/.conf.json\" ]; then\n\

@@ -3,7 +3,7 @@
 getAptPackage(){
     printf "\n\n==> Getting environment packages\n"
     export DEBIAN_FRONTEND=noninteractive
-    apt-get update && apt-get install -y vim ntp zip unzip curl wget build-essential python3 python3-requests
+    apt-get update && apt-get install -y vim ntp zip unzip curl wget build-essential python3 python3-requests libseccomp-dev
 }
 
 setJudgeConf(){
